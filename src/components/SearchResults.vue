@@ -2,23 +2,27 @@
 	<div class='root'>
 		<p> Showing {{ filteredTitles.length }} results for "{{ query }}" </p>
 		<ul>
-			<li v-for='title in filteredTitles' :key='title'>
-				{{ title }}
+			<li v-for='title in filteredTitles' :key='title.Page'>
+				{{ title.Name }}
 			</li>
 		</ul>
 	</div>
 </template>
 <script>
-import { ref, computed } from 'vue'
-
-const titles = ['Creating Your First Vue3 Project', 'A Complete Guide to Vue Lifecycle Hooks in Vue3']
+import { ref, computed, onMounted } from 'vue'
+import titles from '../post-data.json'
 export default {
 	props: {
 		query: String
 	},
 	setup (props, context) {
+		
+		onMounted(() => {
+			console.log('mounted')
+		})
+		
 		const filteredTitles = computed(() => {
-			return titles.filter(s => s.toLowerCase().includes(props.query.toLowerCase()))
+			return titles.filter(s => s.Name.toLowerCase().includes(props.query.toLowerCase()))
 		})
 
 		return {

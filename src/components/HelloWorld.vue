@@ -13,7 +13,6 @@
 <script>
   import { ref } from 'vue'
   import SearchResults from './SearchResults.vue'
-
   export default {
     components: {
       SearchResults
