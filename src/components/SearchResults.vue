@@ -9,7 +9,7 @@
 	</div>
 </template>
 <script>
-import { ref, computed, onMounted } from 'vue'
+import { computed, onMounted } from 'vue'
 import titles from '../post-data.json'
 export default {
 	props: {
@@ -20,7 +20,7 @@ export default {
 		onMounted(() => {
 			console.log('mounted')
 		})
-		
+
 		const filteredTitles = computed(() => {
 			return titles.filter(s => s.Name.toLowerCase().includes(props.query.toLowerCase()))
 		})
